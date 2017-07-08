@@ -1057,7 +1057,7 @@ In the dollars per day example, we used base 2 instead of base 10 because the re
 In base 10 this turns into a range that includes very few integers: just 0 and 1. 
 With base two, our range includes -2, -1, 0, 1, 2, 3, 4 and 5. It is easier to compute $2^x$ and $10^x$ when $x$ is an integer and between -10 and 10, so we prefer to have more small integers in the scale. Another consequence of a limited range is that choosing the binwidth is more challenging. With log base 2, we know that a binwidth of 1 will translate to a bin with range $x$ to $2x$.
 
-As an example in which base 10 makes more sense consider population sizes. A log base 10 makes more sense since the range for these is `r with(filter(gapminder, year==past_year), range(population, na.rm=TRUE))`. Here is the histogram of the transformed values:
+As an example in which base 10 makes more sense consider population sizes. A log base 10 makes more sense since the range for these is about 1000 to 10 billion. Here is the histogram of the transformed values:
 
 ```{r}
 gapminder %>% filter(year == past_year) %>%
