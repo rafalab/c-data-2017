@@ -8,9 +8,9 @@ layout: page
 
 The concept of distance can be generalized from  physical distance. For example, we cluster animals into groups. When we do this, we put animals that "close" in the same group.
 
-Any time we cluster individuals into separate groups we are, explicitely or implicitely computing a distance. 
+Any time we cluster individuals into separate groups we are, explicitly or implicitly computing a distance. 
 
-Do create _heatmaps_ a distance is computed explicitely. Heatmaps are widely used in genomics and other highthroughput fields:
+When we create _heatmaps_ a distance is computed explicitly. Heatmaps are widely used in genomics and other highthroughput fields:
 
 ```{r, echo=FALSE}
 knitr::include_graphics("https://upload.wikimedia.org/wikipedia/commons/4/48/Heatmap.png")
