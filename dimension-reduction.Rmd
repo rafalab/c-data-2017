@@ -30,7 +30,7 @@ points(X[1:2,], col="red", pch=16)
 lines(X[1:2,],col="red")
 ```
 
-To help with the illustration, think of this as data with many features with with the twin pairs representing the $N$ observations and the two heights representing two features. For this illustration, we will act as if two is too high dimensional. We want to reduce the dimensions to 1.
+To help with the illustration, think of this as data with many features with the twin pairs representing the $N$ observations and the two heights representing two features. For this illustration, we will act as if two is too high dimensional. We want to reduce the dimensions to 1.
 
 We are interested in the distance between any two samples. We can compute this using `dist`. For example, here is the distance between the two orange points in the figure above:
 
@@ -51,7 +51,7 @@ X <- apply(X ,2, function(x) x -  mean(x))
 
 What if making two dimensional plots was too complex and we were only able to make 1 dimensional plots. Can we, for example, reduce the data to a one dimensional matrix that preserves distances between points?
 
-Let's start with the naive approach of simply removing one of the two dimensions. Let's compare the actual distances to the distance computed with just one of the dimensions. The plot below shows the comparison to the first dimension (left) and to the second (right)
+Let's start with the naive approach of simply removing one of the two dimensions. Let's compare the actual distances to the distance computed with just one of the dimensions. The plot below shows the comparison to the first dimension (left) and to the second (right).
 
 ```{r}
 Z <- X[,1]
@@ -65,11 +65,11 @@ plot(dist(X), dist(Z))
 abline(0,1)
 ```
 
-Note that there is a strong correlation, but can we improve it? Furthermore, the actual distance is generally underestimated. This is actually to expected since we are adding more things in the actual distance. If instead we average and use this distance, 
+Note that there is a strong correlation, but can we improve it? Furthermore, the actual distance is generally underestimated. This is actually to be expected since we are adding more things in the actual distance. If instead we average and use this distance, 
 
 $$\sqrt{ \frac{1}{2} \sum_{j=1}^2 (X_{i,j}-X_{i,j})^2 }$$
 
-then the bias goes away
+then the bias goes away.
 
 
 ```{r}
@@ -87,8 +87,7 @@ Can we pick a one dimensional summary that makes this correlation even stronger?
 cor(dist(X), dist(Z))
 ```
 
-If we look back at the plot, and visualize a line between any pair of points, the length of this line is the distance between the two points. These lines tend to go along the direction of the diagonal. Notice that if we instead plot the  
-
+If we look back at the plot, and visualize a line between any pair of points, the length of this line is the distance between the two points. These lines tend to go along the direction of the diagonal. Notice that if we instead make a MA-plot, the diagonal is in the x-axis.
 
 ```{r rotation, fig.cap="Twin height scatterplot (left) and MA-plot (right).",fig.width=10.5,fig.height=5.25}
 avg <- rowMeans(X) ##or (X[,1] + X[,2])/2
@@ -159,7 +158,7 @@ Y = Z A^{-1}
 A^{-1} = \,
 \begin{pmatrix}
 1&1\\
-1/21&-1/2\\
+1/2&-1/2\\
 \end{pmatrix}
 \implies
 $$
@@ -176,7 +175,7 @@ $$
 a_{1,1} a_{1,2} + a_{2,1} a_{2,2} = 0
 $$
 
-In this particular example to achieve this, we multiply the first set of coefficients (first column of $A$) by $\sqrt{2}$ and the second by $1\sqrt{2}$ then we get the same exact distance if we use both dimensions and a great approximation if we use both.
+In this particular example to achieve this, we multiply the first set of coefficients (first column of $A$) by $\sqrt{2}$ and the second by $1/\sqrt{2}$ then we get the same exact distance if we use both dimensions and a great approximation if we use just the first.
 
 ```{r}
 Z[,1] <- (X[,1] + X[,2])/sqrt(2)
@@ -308,14 +307,13 @@ Here we show an example for which we measure RNA expression for 8,793 genes from
 
 ```{r,message=FALSE, echo=FALSE}
 library(Biobase)
-##devtools::install_github("genomicsclass/GSE5859")
-library(GSE5859) 
-##to intsall GSE5859
+##to install GSE5859
 ##library(devtools)
-##install_github("genomicsclass/GSE5859""")
+##install_github("genomicsclass/GSE5859")
+library(GSE5859) 
 data(GSE5859)
 ###The data needs some clean up
-### and we do this with packages from the Bioconductor proejct. 
+### and we do this with packages from the Bioconductor project. 
 cors <- cor(exprs(e))
 Pairs=which(abs(cors)>0.9999, arr.ind = TRUE)
 out = Pairs[which(Pairs[,1]<Pairs[,2]), ,drop = FALSE]
