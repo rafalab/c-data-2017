@@ -87,20 +87,20 @@ We also do not cover interactive graphics, a topic that is a too advanced for th
 ## A first introduction to ggplot2
 
 
-```{r,echo=FALSE}
+```{r,echo=FALSE,eval=FALSE}
 knitr::include_graphics("http://abcnews.go.com/images/International/homocides_g8_countries_640x360_wmain.jpg")
 ```
 
 
 
-```{r,echo=FALSE}
+```{r,echo=FALSE,eval=FALSE}
 knitr::include_graphics("img/GunTrends_murders_per_1000.png")
 ```
 
 
 But the US is a big diverse country:
 
-```{r,echo=FALSE}
+```{r,echo=FALSE,eval=FALSE}
 knitr::include_graphics("(http://www.foundshit.com/pictures/funny/usa-stereotypes.jpg")
 ```
 
