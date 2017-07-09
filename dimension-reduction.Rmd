@@ -308,14 +308,13 @@ Here we show an example for which we measure RNA expression for 8,793 genes from
 
 ```{r,message=FALSE, echo=FALSE}
 library(Biobase)
-##devtools::install_github("genomicsclass/GSE5859")
-library(GSE5859) 
-##to intsall GSE5859
+##to install GSE5859
 ##library(devtools)
-##install_github("genomicsclass/GSE5859""")
+##install_github("genomicsclass/GSE5859")
+library(GSE5859) 
 data(GSE5859)
 ###The data needs some clean up
-### and we do this with packages from the Bioconductor proejct. 
+### and we do this with packages from the Bioconductor project. 
 cors <- cor(exprs(e))
 Pairs=which(abs(cors)>0.9999, arr.ind = TRUE)
 out = Pairs[which(Pairs[,1]<Pairs[,2]), ,drop = FALSE]
